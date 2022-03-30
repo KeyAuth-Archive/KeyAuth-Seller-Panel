@@ -49,7 +49,7 @@ namespace KeyAuth_Seller_Panel.SellerPanel.CustomControls
             HomeView.details.LoadApps();
         }
 
-        private void AboutBtn_Click(object sender, EventArgs e)
+        private void SettingsBtn_Click(object sender, EventArgs e)
         {
             ProgramSettingsView programSettingsView = new ProgramSettingsView();
             if (programSettingsView.ShowDialog() == DialogResult.OK)

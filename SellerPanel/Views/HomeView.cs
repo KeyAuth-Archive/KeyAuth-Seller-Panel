@@ -1,5 +1,4 @@
-﻿using KeyAuth_Seller_Panel.SellerPanel.Views.PopUpViews;
-using KeyAuth_Seller_Panel.SellerPanel.Classes;
+﻿using KeyAuth_Seller_Panel.SellerPanel.Classes;
 using KeyAuthSeller;
 using System.Windows.Forms;
 using System;
@@ -33,11 +32,6 @@ namespace KeyAuth_Seller_Panel
             HomeViewSb.BorderColor = color;
             MinButton.HoverState.IconColor = color;
             CloseButton.HoverState.IconColor = color;
-        }
-
-        private void MinButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

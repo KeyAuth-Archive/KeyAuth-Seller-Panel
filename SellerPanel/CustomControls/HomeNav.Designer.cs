@@ -371,7 +371,7 @@
             this.SettingsBtn.TextMarginLeft = 0;
             this.SettingsBtn.TextPadding = new System.Windows.Forms.Padding(0);
             this.SettingsBtn.UseDefaultRadiusAndThickness = true;
-            this.SettingsBtn.Click += new System.EventHandler(this.AboutBtn_Click);
+            this.SettingsBtn.Click += new System.EventHandler(this.SettingsBtn_Click);
             // 
             // Notify
             // 

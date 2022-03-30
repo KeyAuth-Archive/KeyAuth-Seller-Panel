@@ -109,7 +109,6 @@
             this.MinButton.Name = "MinButton";
             this.MinButton.Size = new System.Drawing.Size(30, 30);
             this.MinButton.TabIndex = 5;
-            this.MinButton.Click += new System.EventHandler(this.MinButton_Click);
             // 
             // CloseButton
             // 

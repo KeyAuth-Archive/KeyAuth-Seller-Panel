@@ -184,7 +184,7 @@
             this.RemoveBtn.TextMarginLeft = 0;
             this.RemoveBtn.TextPadding = new System.Windows.Forms.Padding(0);
             this.RemoveBtn.UseDefaultRadiusAndThickness = true;
-            this.RemoveBtn.Click += new System.EventHandler(this.App1RemoveButton_Click);
+            this.RemoveBtn.Click += new System.EventHandler(this.RemoveBtn_Click);
             // 
             // LoadBtn
             // 
@@ -276,7 +276,7 @@
             this.LoadBtn.TextMarginLeft = 0;
             this.LoadBtn.TextPadding = new System.Windows.Forms.Padding(0);
             this.LoadBtn.UseDefaultRadiusAndThickness = true;
-            this.LoadBtn.Click += new System.EventHandler(this.App1LoadButton_Click);
+            this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
             // 
             // AppCardElipse
             // 

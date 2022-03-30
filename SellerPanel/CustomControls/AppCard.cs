@@ -1,7 +1,6 @@
 ﻿using KeyAuth_Seller_Panel.SellerPanel.Views;
 using System;
 using System.Collections.Specialized;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace KeyAuth_Seller_Panel.SellerPanel.CustomControls
@@ -43,13 +42,13 @@ namespace KeyAuth_Seller_Panel.SellerPanel.CustomControls
             AppLoad();         
         }
 
-        private void App1LoadButton_Click(object sender, EventArgs e)
+        private void LoadBtn_Click(object sender, EventArgs e)
         {
             SelectedAppView selectedAppView = new SelectedAppView(App , SelectedApp);
             selectedAppView.ShowDialog();
         }
 
-        private void App1RemoveButton_Click(object sender, EventArgs e)
+        private void RemoveBtn_Click(object sender, EventArgs e)
         {
             HomeView.details.RemoveApp(SelectedApp);
             HomeView.details.LoadApps();
