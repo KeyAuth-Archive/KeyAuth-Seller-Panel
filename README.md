@@ -1,1 +1,1 @@
-# KeyAuth Admin Panel.
+# KeyAuth Seller Panel.
