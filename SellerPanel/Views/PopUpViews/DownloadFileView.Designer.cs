@@ -180,7 +180,7 @@
             // AppEnabled
             // 
             this.AppEnabled.BackColor = System.Drawing.Color.Transparent;
-            this.AppEnabled.Checked = false;
+            this.AppEnabled.Checked = true;
             this.AppEnabled.CheckedBackColor = System.Drawing.Color.DodgerBlue;
             this.AppEnabled.CheckedSwitchColor = System.Drawing.Color.White;
             this.AppEnabled.CheckedSwitchStyle = Bunifu.UI.WinForms.BunifuToggleSwitch2.SwitchStyles.Fill;
