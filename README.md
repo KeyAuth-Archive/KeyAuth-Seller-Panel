@@ -1,1 +1,1 @@
-# KeyAuth-Admin-Panel
+# KeyAuth Admin Panel.
