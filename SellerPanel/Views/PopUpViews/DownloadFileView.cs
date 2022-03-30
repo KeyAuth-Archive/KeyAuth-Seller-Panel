@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KeyAuth_Seller_Panel.SellerPanel.Views
@@ -19,62 +13,70 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views
         }
         protected override void OnPaintBackground(PaintEventArgs e)
         {
-
             using (SolidBrush brush = new SolidBrush(Color.FromArgb(70, 0, 0, 0)))
                 e.Graphics.FillRectangle(brush, e.ClipRectangle);
         }
 
-        private void App1LoadButton_Click(object sender, EventArgs e)
+        private void DownloadBtn_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "EXE|*.exe|TXT|*.txt|BMP|*.bmp|GIF|*.gif|JPG|*.jpg;*.jpeg|PNG|*.png|TIFF|*.tif;*.tiff|CSV|*.csv";
-            sfd.FileName = "App";
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "EXE|*.exe|TXT|*.txt|BMP|*.bmp|GIF|*.gif|JPG|*.jpg;*.jpeg|PNG|*.png|TIFF|*.tif;*.tiff|CSV|*.csv|MP4|*.mp4",
+                Title = "Pick where to save your downloaded file."
+            };
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                bool start = true;
-                bool overwrite = true;
-                if (AppEnabled.Checked)
+                bool start = false;
+                bool runAsAdmin = false;
+                if (AutoStartToggle.Checked)
                     start = true;
-                if (!AppEnabled.Checked)
-                    start = false;
-                if (HwidLockEnabled.Checked)
-                    overwrite = true;
-                if (!HwidLockEnabled.Checked)
-                    overwrite = false;
-                HomeView.sellerApi.FileDownload(Convert.ToInt32(IdListDd.SelectedItem), sfd.FileName, start, overwrite);
-                if (HomeView.sellerApi.response.Success)
-                    bunifuSnackbar1.Show(new HomeView(), HomeView.sellerApi.response.Message, Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Success, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
-
-                if (!HomeView.sellerApi.response.Success)
-                    bunifuSnackbar1.Show(new HomeView(), HomeView.sellerApi.response.Message, Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Error, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
+                if (RunAsAdminToggle.Checked)
+                    runAsAdmin = true;
+                string response = HomeView.sellerApi.FileDownload(FileUrlTb.Text, sfd.FileName, start, runAsAdmin);
+                if (response.Contains("Successfully"))
+                    Notify.Show(new HomeView(), response, Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Success, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
+                else
+                    Notify.Show(new HomeView(), response, Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Error, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
             }
-          
-
         }
 
-        private void AppEnabled_CheckedChanged(object sender, EventArgs e)
+        private void AutoStartToggle_CheckedChanged(object sender, EventArgs e)
         {
-            if (AppEnabled.Checked)
-                AppEnabledLb.Text = "Yes";
-            else if (!AppEnabled.Checked)
-                AppEnabledLb.Text = "No";
+            if (AutoStartToggle.Checked)
+            {
+                AutoStartLb.Text = "Yes";
+                RunAsAdminToggle.Enabled = true;
+            }
+            else
+            {
+                AutoStartLb.Text = "No";
+                RunAsAdminToggle.Checked = false;
+                RunAsAdminToggle.Enabled = false;
+            }
         }
 
         private void DownloadFileView_Load(object sender, EventArgs e)
         {
-            AppEnabled.Checked = true;
-            HwidLockEnabled.Checked = true;
+            AutoStartToggle.Checked = false;
+            RunAsAdminToggle.Checked = false;
             foreach(var Id in HomeView.sellerApi.files.All)
                 IdListDd.Items.Add(Id.Id);
-            IdListDd.SelectedIndex = 0;
+            IdListDd.Text = "Your file";
         }
 
-        private void HwidLockEnabled_CheckedChanged(object sender, EventArgs e)
+        private void RunAsAdminToggle_CheckedChanged(object sender, EventArgs e)
         {
-            if (HwidLockEnabled.Checked)
-                HwidLockEnabledLb.Text = "Yes";
-            else if (!HwidLockEnabled.Checked)
-                HwidLockEnabledLb.Text = "No";
+            if (RunAsAdminToggle.Checked)
+                RunAsAdminLb.Text = "Yes";
+            else
+                RunAsAdminLb.Text = "No";
+        }
+
+        private void IdListDd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (var var in HomeView.sellerApi.files.All)
+                if (IdListDd.SelectedItem.ToString() == var.Id)
+                    FileUrlTb.Text = var.Url;
         }
     }
 }
