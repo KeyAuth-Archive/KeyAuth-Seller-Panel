@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C472C172-9339-4B88-9160-178C4BF32FA1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>KeyAuth_Seller_Panel</RootNamespace>
+    <AssemblyName>KeyAuth_Seller_Panel</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SellerPanel\Classes\AppDetails.cs" />
+    <Compile Include="SellerPanel\Classes\KeyAuth.cs" />
+    <Compile Include="SellerPanel\Classes\KeyAuthSeller.cs" />
+    <Compile Include="SellerPanel\CustomControls\AppCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\CustomControls\AppCard.Designer.cs">
+      <DependentUpon>AppCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\CustomControls\HomeNav.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\CustomControls\HomeNav.Designer.cs">
+      <DependentUpon>HomeNav.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\CreateNewUserLicenseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\CreateNewUserLicenseView.Designer.cs">
+      <DependentUpon>CreateNewUserLicenseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\SendWebhookView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\SendWebhookView.Designer.cs">
+      <DependentUpon>SendWebhookView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\ProgramSettingsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\ProgramSettingsView.Designer.cs">
+      <DependentUpon>ProgramSettingsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\AddNewAppView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\AddNewAppView.Designer.cs">
+      <DependentUpon>AddNewAppView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\BanKeyView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\BanKeyView.Designer.cs">
+      <DependentUpon>BanKeyView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\BanUserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\BanUserView.Designer.cs">
+      <DependentUpon>BanUserView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\CreateNewUserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\CreateNewUserView.Designer.cs">
+      <DependentUpon>CreateNewUserView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\CreateSubView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\CreateSubView.Designer.cs">
+      <DependentUpon>CreateSubView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\BlackListAddView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\BlackListAddView.Designer.cs">
+      <DependentUpon>BlackListAddView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\EditSubView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\EditSubView.Designer.cs">
+      <DependentUpon>EditSubView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\DownloadFileView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\DownloadFileView.Designer.cs">
+      <DependentUpon>DownloadFileView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\EditVarView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\EditVarView.Designer.cs">
+      <DependentUpon>EditVarView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\HomeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\HomeView.Designer.cs">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\ExtendUsersViews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\ExtendUsersViews.Designer.cs">
+      <DependentUpon>ExtendUsersViews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\GenerateLicensesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\GenerateLicensesView.Designer.cs">
+      <DependentUpon>GenerateLicensesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\SetUserVarView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\SetUserVarView.Designer.cs">
+      <DependentUpon>SetUserVarView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\UserInfoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\PopUpViews\UserInfoView.Designer.cs">
+      <DependentUpon>UserInfoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SellerPanel\Views\SelectedAppControls\AppStatsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\AppStatsView.Designer.cs">
+      <DependentUpon>AppStatsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\BlackListsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\BlackListsView.Designer.cs">
+      <DependentUpon>BlackListsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\ChatsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\ChatsView.Designer.cs">
+      <DependentUpon>ChatsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\FilesView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\FilesView.Designer.cs">
+      <DependentUpon>FilesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\LicensesView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\LicensesView.Designer.cs">
+      <DependentUpon>LicensesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\SubscriptionsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\SubscriptionsView.Designer.cs">
+      <DependentUpon>SubscriptionsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\UsersView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\UsersView.Designer.cs">
+      <DependentUpon>UsersView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\VariablesView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\VariablesView.Designer.cs">
+      <DependentUpon>VariablesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppView.Designer.cs">
+      <DependentUpon>SelectedAppView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\SettingsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SellerPanel\Views\SelectedAppControls\SettingsView.Designer.cs">
+      <DependentUpon>SettingsView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="SellerPanel\CustomControls\AppCard.resx">
+      <DependentUpon>AppCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\CustomControls\HomeNav.resx">
+      <DependentUpon>HomeNav.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\CreateNewUserLicenseView.resx">
+      <DependentUpon>CreateNewUserLicenseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\SendWebhookView.resx">
+      <DependentUpon>SendWebhookView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\ProgramSettingsView.resx">
+      <DependentUpon>ProgramSettingsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\AddNewAppView.resx">
+      <DependentUpon>AddNewAppView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\BanKeyView.resx">
+      <DependentUpon>BanKeyView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\BanUserView.resx">
+      <DependentUpon>BanUserView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\CreateNewUserView.resx">
+      <DependentUpon>CreateNewUserView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\CreateSubView.resx">
+      <DependentUpon>CreateSubView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\BlackListAddView.resx">
+      <DependentUpon>BlackListAddView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\EditSubView.resx">
+      <DependentUpon>EditSubView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\DownloadFileView.resx">
+      <DependentUpon>DownloadFileView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\EditVarView.resx">
+      <DependentUpon>EditVarView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\HomeView.resx">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\ExtendUsersViews.resx">
+      <DependentUpon>ExtendUsersViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\GenerateLicensesView.resx">
+      <DependentUpon>GenerateLicensesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\SetUserVarView.resx">
+      <DependentUpon>SetUserVarView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\PopUpViews\UserInfoView.resx">
+      <DependentUpon>UserInfoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\SelectedAppControls\AppStatsView.resx">
+      <DependentUpon>AppStatsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\SelectedAppControls\BlackListsView.resx">
+      <DependentUpon>BlackListsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\SelectedAppControls\ChatsView.resx">
+      <DependentUpon>ChatsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\SelectedAppControls\FilesView.resx">
+      <DependentUpon>FilesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\SelectedAppControls\LicensesView.resx">
+      <DependentUpon>LicensesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\SelectedAppControls\SubscriptionsView.resx">
+      <DependentUpon>SubscriptionsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\SelectedAppControls\UsersView.resx">
+      <DependentUpon>UsersView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\SelectedAppControls\VariablesView.resx">
+      <DependentUpon>VariablesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\SelectedAppView.resx">
+      <DependentUpon>SelectedAppView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerPanel\Views\SelectedAppControls\SettingsView.resx">
+      <DependentUpon>SettingsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="SellerPanel\FodyWeavers.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Bunifu.Charts.WinForms">
+      <Version>1.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="Bunifu.Dataviz.WinForms">
+      <Version>2.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Bunifu.UI.WinForms">
+      <Version>5.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Bunifu.Utils">
+      <Version>1.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="CircleProgressBar">
+      <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Costura.Fody">
+      <Version>5.7.0</Version>
+      <IncludeAssets>runtime; compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="CsvHelper">
+      <Version>27.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="discord-webhook-client">
+      <Version>3.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Guna.UI2.WinForms">
+      <Version>2.0.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json">
+      <Version>6.0.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Banner.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Browser.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\discord.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\github.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

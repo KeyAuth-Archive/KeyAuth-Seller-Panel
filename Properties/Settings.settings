@@ -1,0 +1,118 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KeyAuth_Seller_Panel.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FirstStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="App1" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;YourBanerUrl&lt;/string&gt;
+  &lt;string&gt;YourAppName&lt;/string&gt;
+  &lt;string&gt;YourSellerKey&lt;/string&gt;
+  &lt;string&gt;YourOwnerId&lt;/string&gt;
+  &lt;string&gt;YourAppSecret&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="App2" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;YourBanerUrl&lt;/string&gt;
+  &lt;string&gt;YourAppName&lt;/string&gt;
+  &lt;string&gt;YourSellerKey&lt;/string&gt;
+  &lt;string&gt;YourOwnerId&lt;/string&gt;
+  &lt;string&gt;YourAppSecret&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="App3" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;YourBanerUrl&lt;/string&gt;
+  &lt;string&gt;YourAppName&lt;/string&gt;
+  &lt;string&gt;YourSellerKey&lt;/string&gt;
+  &lt;string&gt;YourOwnerId&lt;/string&gt;
+  &lt;string&gt;YourAppSecret&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="App4" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;YourBanerUrl&lt;/string&gt;
+  &lt;string&gt;YourAppName&lt;/string&gt;
+  &lt;string&gt;YourSellerKey&lt;/string&gt;
+  &lt;string&gt;YourOwnerId&lt;/string&gt;
+  &lt;string&gt;YourAppSecret&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="App5" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;YourBanerUrl&lt;/string&gt;
+  &lt;string&gt;YourAppName&lt;/string&gt;
+  &lt;string&gt;YourSellerKey&lt;/string&gt;
+  &lt;string&gt;YourOwnerId&lt;/string&gt;
+  &lt;string&gt;YourAppSecret&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="App6" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;YourBanerUrl&lt;/string&gt;
+  &lt;string&gt;YourAppName&lt;/string&gt;
+  &lt;string&gt;YourSellerKey&lt;/string&gt;
+  &lt;string&gt;YourOwnerId&lt;/string&gt;
+  &lt;string&gt;YourAppSecret&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="App7" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;YourBanerUrl&lt;/string&gt;
+  &lt;string&gt;YourAppName&lt;/string&gt;
+  &lt;string&gt;YourSellerKey&lt;/string&gt;
+  &lt;string&gt;YourOwnerId&lt;/string&gt;
+  &lt;string&gt;YourAppSecret&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="App8" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;YourBanerUrl&lt;/string&gt;
+  &lt;string&gt;YourAppName&lt;/string&gt;
+  &lt;string&gt;YourSellerKey&lt;/string&gt;
+  &lt;string&gt;YourOwnerId&lt;/string&gt;
+  &lt;string&gt;YourAppSecret&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="App9" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;YourBanerUrl&lt;/string&gt;
+  &lt;string&gt;YourAppName&lt;/string&gt;
+  &lt;string&gt;YourSellerKey&lt;/string&gt;
+  &lt;string&gt;YourOwnerId&lt;/string&gt;
+  &lt;string&gt;YourAppSecret&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="App10" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;YourBanerUrl&lt;/string&gt;
+  &lt;string&gt;YourAppName&lt;/string&gt;
+  &lt;string&gt;YourSellerKey&lt;/string&gt;
+  &lt;string&gt;YourOwnerId&lt;/string&gt;
+  &lt;string&gt;YourAppSecret&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ProgramName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">KeyAuth Admin Panel</Value>
+    </Setting>
+    <Setting Name="AscentColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">7, 127, 243</Value>
+    </Setting>
+    <Setting Name="BackColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">22, 24, 26</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
