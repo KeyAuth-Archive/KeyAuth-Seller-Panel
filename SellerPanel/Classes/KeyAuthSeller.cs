@@ -1231,57 +1231,31 @@ namespace KeyAuthSeller
         /// <param name="fileId">The file id number you wish to download</param>
         /// <param name="fileName">The name of the file once downloaded</param>
         /// <param name="path">The path to download the file to</param>
-        public void FileDownload(int fileId , string filePath , bool start, bool overWrite)
+        public string FileDownload(string url , string filePath , bool start, bool runAsAdmin)
         {
-            string url = $"?sellerkey={_sellerKey}&type=fetchallfiles";
-            var response = Request(url);
-            var json = JsonConvert.DeserializeObject<ResponseStructure>(response);
-            if (json.Success)
+            var req = Client.GetAsync(url).ContinueWith(res =>
             {
-                var jsonFiles = JsonConvert.DeserializeObject<FilesStructure>(response);
-                LoadFileStruct(jsonFiles);
-                string id = fileId.ToString();
-                foreach (var file in jsonFiles.Files)
-                    if (file.Id == id)
-                    {
-                        if (overWrite == false && File.Exists(filePath))
-                        {
-                            json.Success = false;
-                            json.Message = "Failed file already exists and overwrite (false)";
-                            LoadResponseStruct(json);
-                            return;
-                        }
-                        var req = Client.GetAsync(file.Url).ContinueWith(res =>
-                        {
-                            var result = res.Result;
-                            if (result.StatusCode == (HttpStatusCode)200)
-                            {
-                                var readData = result.Content.ReadAsByteArrayAsync();
-                                readData.Wait();
-                                var readstream = readData.Result;
-                                File.WriteAllBytes(filePath, readstream);
-                                if (start)
-                                    Process.Start(filePath);
-                                json.Success = true;
-                                json.Message = "Download completed";
-                            }
-                            else
-                            {
-                                json.Success = false;
-                                json.Message = "Failed to download";
-                            }
-                        });
-                        req.Wait();
-                        break;
-                    }
-                    else if (file.Id != id)
-                    {
-                        json.Success = false;
-                        json.Message = "No file found by that id number";
-                        break;
-                    }
+                var result = res.Result;
+                if (result.StatusCode == (HttpStatusCode)200)
+                {
+                    var readData = result.Content.ReadAsByteArrayAsync();
+                    readData.Wait();
+                    var readstream = readData.Result;
+                    File.WriteAllBytes(filePath, readstream);
+                    return null;
+                }
+                else
+                    return "Failed to download file!";
+            });
+            req.Wait();
+            if (start == true)
+            {
+                if (runAsAdmin == true)
+                    ExecuteAsAdmin(filePath);
+                else
+                    Process.Start(filePath);
             }
-            LoadResponseStruct(json);
+            return "Successfully downloaded file.";
         }
         #endregion
 
@@ -1910,7 +1884,14 @@ namespace KeyAuthSeller
         }
         #endregion
 
-
+        public void ExecuteAsAdmin(string fileName)
+        {
+            Process proc = new Process();
+            proc.StartInfo.FileName = fileName;
+            proc.StartInfo.UseShellExecute = true;
+            proc.StartInfo.Verb = "runas";
+            proc.Start();
+        }
         public DateTime UnixTimeToDateTime(long unixtime)
         {
             DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Local);
