@@ -85,7 +85,7 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.PopUpViews
 
         private void DefaultBtn_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.ProgramName = "KeyAuth Admin Panel";
+            Properties.Settings.Default.ProgramName = "KeyAuth Seller Panel";
             Properties.Settings.Default.BackColor = Color.FromArgb(22, 24, 26);
             Properties.Settings.Default.AscentColor =Color.FromArgb(7, 127, 243);
             Properties.Settings.Default.Save();

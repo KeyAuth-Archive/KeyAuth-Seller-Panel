@@ -71,11 +71,11 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Classes
             {
                 Properties.Settings.Default[Name] = App;
                 Properties.Settings.Default.Save();
-                return "Successfuly Updated App settings.";
+                return "Successfully Updated App settings.";
             }
             catch
             {
-                return "Failed to update app setttings";
+                return "Failed to update app setttings.";
             }
         }
 
@@ -206,29 +206,6 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Classes
             HomeView.AppLayout.Controls.Add(homeNav);
             homeNav.BringToFront();
         }
-        /*public void TestLoadApps()
-        {
-            HomeView.AppLayout.Controls.Clear();
 
-            int numberOfApps = 0;
-            int num = 0;
-            string test = $"App{num}";
-            var test1 = Properties.Settings.Default[test];
-            var test2 = test1
-            Console.WriteLine(test1.);
-            StringCollection s = new StringCollection
-            {
-                
-            };
-            if (Settings[0] != "YourBanerUrl")
-            {
-                numberOfApps++;
-                AppCard appCard = new AppCard(Settings.App1, "App1");
-                HomeView.AppLayout.Controls.Add(appCard);
-            }
-            HomeNav homeNav = new HomeNav(numberOfApps);
-            HomeView.AppLayout.Controls.Add(homeNav);
-            homeNav.BringToFront();
-        }*/
     }
 }

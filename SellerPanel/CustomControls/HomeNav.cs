@@ -13,6 +13,8 @@ namespace KeyAuth_Seller_Panel.SellerPanel.CustomControls
         {
             InitializeComponent();
             this.TotalApps = TotalApps;
+
+            /// ----------> TESTING
             NavGb.BorderColor = Properties.Settings.Default.AscentColor;
 
             AddNewAppBtn.onHoverState.FillColor = Properties.Settings.Default.AscentColor;
@@ -35,6 +37,7 @@ namespace KeyAuth_Seller_Panel.SellerPanel.CustomControls
             SettingsBtn.OnPressedState.BorderColor = Properties.Settings.Default.AscentColor;
             SettingsBtn.OnPressedState.FillColor = Properties.Settings.Default.AscentColor;
             SettingsBtn.Refresh();
+            ///  ---------->
         }
 
         private void AddNewAppBtn_Click(object sender, EventArgs e)
@@ -51,9 +54,10 @@ namespace KeyAuth_Seller_Panel.SellerPanel.CustomControls
 
         private void SettingsBtn_Click(object sender, EventArgs e)
         {
-            ProgramSettingsView programSettingsView = new ProgramSettingsView();
+            Notify.Show(HomeView.MainForm, "This is coming soon.", BunifuSnackbar.MessageTypes.Information, 5000, "", BunifuSnackbar.Positions.MiddleCenter);
+            /*ProgramSettingsView programSettingsView = new ProgramSettingsView();
             if (programSettingsView.ShowDialog() == DialogResult.OK)
-                Application.Restart();
+                Application.Restart();*/
         }
 
         private void HomeNav_Load(object sender, EventArgs e)

@@ -7,7 +7,7 @@
     <ProjectGuid>{C472C172-9339-4B88-9160-178C4BF32FA1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>KeyAuth_Seller_Panel</RootNamespace>
-    <AssemblyName>KeyAuth_Seller_Panel</AssemblyName>
+    <AssemblyName>KeyAuth Seller Panel</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -527,7 +527,7 @@
             borderEdges1.TopLeft = true;
             borderEdges1.TopRight = true;
             this.SaveBtn.CustomizableEdges = borderEdges1;
-            this.SaveBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.SaveBtn.DialogResult = System.Windows.Forms.DialogResult.None;
             this.SaveBtn.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.SaveBtn.DisabledFillColor = System.Drawing.Color.Empty;
             this.SaveBtn.DisabledForecolor = System.Drawing.Color.Empty;

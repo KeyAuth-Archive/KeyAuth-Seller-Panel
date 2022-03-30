@@ -13,6 +13,7 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views
         public static App app = new App();
         public static string SelectedApp;
         public static Form AppView;
+        public static Panel AppViews;
         public class App
         {
             public string BannerUrl { get; set; }
@@ -21,7 +22,7 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views
             public string OwnerId { get; set; }
             public string AppSecret { get; set; }
         }
-        public static Panel AppViews { get; set; }
+        
 
         private void SetAscentColors(Color color)
         {
@@ -50,11 +51,12 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views
             InitializeComponent();
             SetAscentColors(Properties.Settings.Default.AscentColor);
             AppViews = AppViewsPanel;
+            AppView = this;
             KeyAuthLb.Text = app.AppName;
             HomeView.sellerApi.SetSellerKey(app.SellerKey);
             if (!HomeView.sellerApi.response.Success)
             {
-                AppsButton.Enabled = false;
+                AppInfoBtn.Enabled = false;
                 LicensesButton.Enabled = false;
                 UsersButton.Enabled = false;
                 SubscriptionsButton.Enabled = false;
@@ -142,6 +144,13 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views
             LicensesView licensesView = new LicensesView();
             AppViews.Controls.Clear();
             AppViews.Controls.Add(licensesView);
+        }
+
+        private void HomeBtn_Click(object sender, EventArgs e)
+        {
+            HomeView.details.LoadApps();
+            this.Close();
+            HomeView.MainForm.Visible = true;
         }
     }
 }

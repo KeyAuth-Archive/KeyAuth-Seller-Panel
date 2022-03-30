@@ -33,10 +33,10 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
             HomeView.sellerApi.FileUpload(FileUrlTb.Text);
             if (HomeView.sellerApi.response.Success)
             {
+                bunifuSnackbar1.Show(new HomeView(), HomeView.sellerApi.response.Message, Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Success, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
                 SelectedAppView.AppViews.Controls.Clear();
                 SelectedAppView.AppViews.Controls.Add(new FilesView());
-                bunifuSnackbar1.Show(new HomeView(), HomeView.sellerApi.response.Message, Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Success, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
-            }
+    }
                
             if (!HomeView.sellerApi.response.Success)
                 bunifuSnackbar1.Show(new HomeView(), HomeView.sellerApi.response.Message, Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Error, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);

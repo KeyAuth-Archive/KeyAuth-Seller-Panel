@@ -73,6 +73,26 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
+            if(UrlTb.Text == "")
+            {
+                bunifuSnackbar1.Show(HomeView.MainForm, "Banner URL can not be blank.", BunifuSnackbar.MessageTypes.Error, 5000, "", BunifuSnackbar.Positions.MiddleCenter);
+                return;
+            }
+            if(!UrlTb.Text.Contains("https://"))
+            {
+                bunifuSnackbar1.Show(HomeView.MainForm, "Must be a valid URL link", BunifuSnackbar.MessageTypes.Error, 5000, "", BunifuSnackbar.Positions.MiddleCenter);
+                return;
+            }
+            if (AppNameTb.Text == "")
+            {
+                bunifuSnackbar1.Show(HomeView.MainForm, "App name can not be blank.", BunifuSnackbar.MessageTypes.Error, 5000, "", BunifuSnackbar.Positions.MiddleCenter);
+                return ;
+            }
+            if (SellerKeyTb.Text == "")
+            {
+                bunifuSnackbar1.Show(HomeView.MainForm, "Seller key can not be blank.", BunifuSnackbar.MessageTypes.Error, 5000, "", BunifuSnackbar.Positions.MiddleCenter);
+                return;
+            }
             if (OwnerIdTb.Text == "")
                 OwnerIdTb.Text = "YourOwnerId";
             if (AppSecretTb.Text == "")
@@ -85,7 +105,18 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
                 OwnerIdTb.Text,
                 AppSecretTb.Text,
             };
-            HomeView.details.UpdateApp(SelectedAppView.SelectedApp, myCol);
+            string response = HomeView.details.UpdateApp(SelectedAppView.SelectedApp, myCol);
+            if (response.Contains("Successfully"))
+            {
+                bunifuSnackbar1.Show(HomeView.MainForm, response, BunifuSnackbar.MessageTypes.Success, 5000, "", BunifuSnackbar.Positions.MiddleCenter);
+                HomeView.details.LoadApps();
+                SelectedAppView.AppView.Close();
+                HomeView.MainForm.Visible = true;
+            }
+            else
+                bunifuSnackbar1.Show(HomeView.MainForm, response, BunifuSnackbar.MessageTypes.Error, 5000, "", BunifuSnackbar.Positions.MiddleCenter);
+
+
         }
 
         private void UrlTb_TextChanged(object sender, EventArgs e)
