@@ -397,7 +397,6 @@
     <None Include="Resources\favicon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Compiled EXE\KeyAuth Seller Panel.exe" />
     <Content Include="SellerPanel\favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
