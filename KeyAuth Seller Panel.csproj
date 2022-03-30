@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>SellerPanel\favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -327,7 +327,7 @@
     <EmbeddedResource Include="SellerPanel\Views\SelectedAppControls\SettingsView.resx">
       <DependentUpon>SettingsView.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="SellerPanel\app.config" />
     <None Include="SellerPanel\FodyWeavers.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -398,7 +398,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Compiled EXE\KeyAuth Seller Panel.exe" />
-    <Content Include="favicon.ico" />
+    <Content Include="SellerPanel\favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

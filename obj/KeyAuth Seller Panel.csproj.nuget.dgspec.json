@@ -1,0 +1,107 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Projects\\KeyAuthProjects\\KeyAuth Seller Panel\\KeyAuth Seller Panel.csproj": {}
+  },
+  "projects": {
+    "D:\\Projects\\KeyAuthProjects\\KeyAuth Seller Panel\\KeyAuth Seller Panel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\KeyAuthProjects\\KeyAuth Seller Panel\\KeyAuth Seller Panel.csproj",
+        "projectName": "KeyAuth_Seller_Panel",
+        "projectPath": "D:\\Projects\\KeyAuthProjects\\KeyAuth Seller Panel\\KeyAuth Seller Panel.csproj",
+        "packagesPath": "C:\\Users\\Monkie\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\KeyAuthProjects\\KeyAuth Seller Panel\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
+          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Monkie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Bunifu.Charts.WinForms": {
+              "target": "Package",
+              "version": "[1.1.5, )"
+            },
+            "Bunifu.Dataviz.WinForms": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            },
+            "Bunifu.UI.WinForms": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
+            "Bunifu.Utils": {
+              "target": "Package",
+              "version": "[1.0.6, )"
+            },
+            "CircleProgressBar": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "Costura.Fody": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.7.0, )"
+            },
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[27.2.1, )"
+            },
+            "Guna.UI2.WinForms": {
+              "target": "Package",
+              "version": "[2.0.3.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "discord-webhook-client": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
