@@ -32,17 +32,17 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.PopUpViews
                 if (var.Name == LevelDd.Text)
                     level = Convert.ToInt32(var.Level);
             int qty = Convert.ToInt32(QtyDd.Text);
-            int expiry = 0;
-            if (DaysDd.SelectedItem.Equals("Day"))
-                expiry = 0;
+            int expiry;
             if (DaysDd.SelectedItem.Equals("Week"))
                 expiry = 1;
-            if (DaysDd.SelectedItem.Equals("Month"))
+            else if (DaysDd.SelectedItem.Equals("Month"))
                 expiry = 2;
-            if (DaysDd.SelectedItem.Equals("Year"))
+            else if (DaysDd.SelectedItem.Equals("Year"))
                 expiry = 3;
-            if (DaysDd.SelectedItem.Equals("Lifetime"))
+            else if (DaysDd.SelectedItem.Equals("Lifetime"))
                 expiry = 4;
+            else
+                expiry = 0;
             HomeView.sellerApi.LicenseGen(expiry, mask, level, qty);
             if (HomeView.sellerApi.response.Success)
                 if (qty > 1)

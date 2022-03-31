@@ -413,6 +413,7 @@
             "Day",
             "Week",
             "Month",
+            "Year",
             "Lifetime"});
             this.DaysDd.ItemTopMargin = 3;
             this.DaysDd.Location = new System.Drawing.Point(22, 84);

@@ -65,6 +65,9 @@
             this.Level = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
             this.bunifuDataGridView1 = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.bunifuVScrollBar1 = new Bunifu.UI.WinForms.BunifuVScrollBar();
+            this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.AppStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.License = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,9 +78,6 @@
             this.UsedOn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GenDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExpiryDays = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bunifuVScrollBar1 = new Bunifu.UI.WinForms.BunifuVScrollBar();
-            this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.guna2ContextMenuStrip1.SuspendLayout();
             this.bunifuPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).BeginInit();
@@ -442,6 +442,7 @@
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(791, 370);
             this.bunifuPanel1.TabIndex = 133;
+            this.bunifuPanel1.Click += new System.EventHandler(this.bunifuPanel1_Click);
             // 
             // bunifuDataGridView1
             // 
@@ -511,6 +512,7 @@
             this.bunifuDataGridView1.EnableHeadersVisualStyles = false;
             this.bunifuDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.bunifuDataGridView1.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
+            this.bunifuDataGridView1.HeaderBgColor = System.Drawing.Color.Empty;
             this.bunifuDataGridView1.HeaderForeColor = System.Drawing.Color.White;
             this.bunifuDataGridView1.Location = new System.Drawing.Point(15, 51);
             this.bunifuDataGridView1.Name = "bunifuDataGridView1";
@@ -532,66 +534,6 @@
             this.bunifuDataGridView1.TabIndex = 110;
             this.bunifuDataGridView1.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Dark;
             this.bunifuDataGridView1.SelectionChanged += new System.EventHandler(this.bunifuDataGridView1_SelectionChanged);
-            // 
-            // AppStatus
-            // 
-            this.AppStatus.HeaderText = "Status";
-            this.AppStatus.Name = "AppStatus";
-            this.AppStatus.ReadOnly = true;
-            // 
-            // License
-            // 
-            this.License.HeaderText = "License";
-            this.License.Name = "License";
-            this.License.ReadOnly = true;
-            // 
-            // SubName
-            // 
-            this.SubName.HeaderText = "Sub";
-            this.SubName.Name = "SubName";
-            this.SubName.ReadOnly = true;
-            // 
-            // Banned
-            // 
-            this.Banned.HeaderText = "Banned";
-            this.Banned.Name = "Banned";
-            this.Banned.ReadOnly = true;
-            // 
-            // Note
-            // 
-            this.Note.HeaderText = "Note";
-            this.Note.Name = "Note";
-            this.Note.ReadOnly = true;
-            // 
-            // GenBy
-            // 
-            this.GenBy.HeaderText = "Gen By";
-            this.GenBy.Name = "GenBy";
-            this.GenBy.ReadOnly = true;
-            // 
-            // UsedBy
-            // 
-            this.UsedBy.HeaderText = "Used By";
-            this.UsedBy.Name = "UsedBy";
-            this.UsedBy.ReadOnly = true;
-            // 
-            // UsedOn
-            // 
-            this.UsedOn.HeaderText = "Used On";
-            this.UsedOn.Name = "UsedOn";
-            this.UsedOn.ReadOnly = true;
-            // 
-            // GenDate
-            // 
-            this.GenDate.HeaderText = "Gen Date";
-            this.GenDate.Name = "GenDate";
-            this.GenDate.ReadOnly = true;
-            // 
-            // ExpiryDays
-            // 
-            this.ExpiryDays.HeaderText = "Expiry";
-            this.ExpiryDays.Name = "ExpiryDays";
-            this.ExpiryDays.ReadOnly = true;
             // 
             // bunifuVScrollBar1
             // 
@@ -665,6 +607,66 @@
             this.bunifuLabel3.Text = "Here you can, ";
             this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // AppStatus
+            // 
+            this.AppStatus.HeaderText = "Status";
+            this.AppStatus.Name = "AppStatus";
+            this.AppStatus.ReadOnly = true;
+            // 
+            // License
+            // 
+            this.License.HeaderText = "License";
+            this.License.Name = "License";
+            this.License.ReadOnly = true;
+            // 
+            // SubName
+            // 
+            this.SubName.HeaderText = "Sub";
+            this.SubName.Name = "SubName";
+            this.SubName.ReadOnly = true;
+            // 
+            // Banned
+            // 
+            this.Banned.HeaderText = "Banned";
+            this.Banned.Name = "Banned";
+            this.Banned.ReadOnly = true;
+            // 
+            // Note
+            // 
+            this.Note.HeaderText = "Note";
+            this.Note.Name = "Note";
+            this.Note.ReadOnly = true;
+            // 
+            // GenBy
+            // 
+            this.GenBy.HeaderText = "Gen By";
+            this.GenBy.Name = "GenBy";
+            this.GenBy.ReadOnly = true;
+            // 
+            // UsedBy
+            // 
+            this.UsedBy.HeaderText = "Used By";
+            this.UsedBy.Name = "UsedBy";
+            this.UsedBy.ReadOnly = true;
+            // 
+            // UsedOn
+            // 
+            this.UsedOn.HeaderText = "Used On";
+            this.UsedOn.Name = "UsedOn";
+            this.UsedOn.ReadOnly = true;
+            // 
+            // GenDate
+            // 
+            this.GenDate.HeaderText = "Gen Date";
+            this.GenDate.Name = "GenDate";
+            this.GenDate.ReadOnly = true;
+            // 
+            // ExpiryDays
+            // 
+            this.ExpiryDays.HeaderText = "Duration";
+            this.ExpiryDays.Name = "ExpiryDays";
+            this.ExpiryDays.ReadOnly = true;
             // 
             // LicensesView
             // 

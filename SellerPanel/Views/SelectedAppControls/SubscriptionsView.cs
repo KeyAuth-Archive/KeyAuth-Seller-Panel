@@ -1,4 +1,5 @@
-﻿using Bunifu.Utils;
+﻿using Bunifu.UI.WinForms;
+using Bunifu.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,15 +19,7 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
         public SubscriptionsView()
         {
             InitializeComponent();
-            ScrollbarBinder.BindDatagridView(bunifuDataGridView1, bunifuVScrollBar1);
-            HomeView.sellerApi.SubViewAll();
-            if (HomeView.sellerApi.response.Success)
-            {
-                var test = HomeView.sellerApi.subs.All;
-                bunifuDataGridView1.DataSource = test;
-                bunifuDataGridView1.AutoResizeColumns();
-                bunifuDataGridView1.AutoResizeRows();
-            }
+
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -80,6 +73,31 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
                 if (test == DialogResult.Abort)
                     bunifuSnackbar1.Show(new HomeView(), HomeView.sellerApi.response.Message, Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Error, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
             }
+        }
+
+        private void SubscriptionsView_Load(object sender, EventArgs e)
+        {
+            ScrollbarBinder.BindDatagridView(bunifuDataGridView1, bunifuVScrollBar1);
+            HomeView.sellerApi.SubViewAll();
+            if (HomeView.sellerApi.response.Success)
+            {
+                var test = HomeView.sellerApi.subs.All;
+                bunifuDataGridView1.DataSource = test;
+                bunifuDataGridView1.AutoResizeColumns();
+                bunifuDataGridView1.AutoResizeRows();
+            }
+            else if (HomeView.sellerApi.response.Message.Contains("No application with specified seller key found"))
+            {
+                bunifuSnackbar1.Show(HomeView.MainForm, "Redirecting to App info.", BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                bunifuSnackbar1.Show(HomeView.MainForm, "Your seller key may have been changed please update it.", BunifuSnackbar.MessageTypes.Error, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                AppStatsView appStatsView = new AppStatsView();
+                SelectedAppView.AppViews.Controls.Add(appStatsView);
+                SelectedAppView.AppViews.Controls.Remove(this);
+
+            }
+            else
+                bunifuSnackbar1.Show(HomeView.MainForm, HomeView.sellerApi.response.Message, BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+
         }
     }
 }

@@ -190,6 +190,7 @@
             this.bunifuDataGridView1.EnableHeadersVisualStyles = false;
             this.bunifuDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
             this.bunifuDataGridView1.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
+            this.bunifuDataGridView1.HeaderBgColor = System.Drawing.Color.Empty;
             this.bunifuDataGridView1.HeaderForeColor = System.Drawing.Color.White;
             this.bunifuDataGridView1.Location = new System.Drawing.Point(15, 51);
             this.bunifuDataGridView1.Name = "bunifuDataGridView1";
@@ -220,13 +221,13 @@
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.guna2ContextMenuStrip1.ShowImageMargin = false;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(156, 92);
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(107, 70);
             // 
             // createSubToolStripMenuItem
             // 
             this.createSubToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.createSubToolStripMenuItem.Name = "createSubToolStripMenuItem";
-            this.createSubToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.createSubToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.createSubToolStripMenuItem.Text = "Create Sub";
             this.createSubToolStripMenuItem.Click += new System.EventHandler(this.createSubToolStripMenuItem_Click);
             // 
@@ -234,7 +235,7 @@
             // 
             this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.deleteToolStripMenuItem.Text = "Delete Sub";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -242,7 +243,7 @@
             // 
             this.editSubToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.editSubToolStripMenuItem.Name = "editSubToolStripMenuItem";
-            this.editSubToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.editSubToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.editSubToolStripMenuItem.Text = "Edit Sub";
             this.editSubToolStripMenuItem.Click += new System.EventHandler(this.editSubToolStripMenuItem_Click);
             // 
@@ -326,6 +327,7 @@
             this.Controls.Add(this.bunifuPanel1);
             this.Name = "SubscriptionsView";
             this.Size = new System.Drawing.Size(791, 370);
+            this.Load += new System.EventHandler(this.SubscriptionsView_Load);
             this.bunifuPanel1.ResumeLayout(false);
             this.bunifuPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).EndInit();

@@ -65,6 +65,7 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views
                 FilesButton.Enabled = false;
                 ChatsButton.Enabled = false;
                 bunifuButton1.Enabled = false;
+                bunifuSnackbar1.Show(HomeView.MainForm, "Failed to load please update details", Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Error, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
             }
 
         }

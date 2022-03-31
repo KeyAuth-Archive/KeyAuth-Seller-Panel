@@ -1,4 +1,5 @@
-﻿using Bunifu.Utils;
+﻿using Bunifu.UI.WinForms;
+using Bunifu.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,18 +19,7 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
         public VariablesView()
         {
             InitializeComponent();
-            ScrollbarBinder.BindDatagridView(bunifuDataGridView1, bunifuVScrollBar1);
-            HomeView.sellerApi.VariableViewAll();
-            if (HomeView.sellerApi.response.Success)
-            {
-                foreach (var Vars in HomeView.sellerApi.variables.All)
-                {
-                    bunifuDataGridView1.Rows.Insert(0, Vars.Varid, Vars.Msg);
-                }//
-                bunifuDataGridView1.Columns[0].Width = 359;
-                bunifuDataGridView1.Columns[1].Width = 359;
-
-            }
+ 
         }
 
         private void AuthedYesNo_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
@@ -48,6 +38,30 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
 
         private void VariablesView_Load(object sender, EventArgs e)
         {
+            ScrollbarBinder.BindDatagridView(bunifuDataGridView1, bunifuVScrollBar1);
+            HomeView.sellerApi.VariableViewAll();
+            if (HomeView.sellerApi.response.Success)
+            {
+                foreach (var Vars in HomeView.sellerApi.variables.All)
+                {
+                    bunifuDataGridView1.Rows.Insert(0, Vars.Varid, Vars.Msg);
+                }//
+                bunifuDataGridView1.Columns[0].Width = 359;
+                bunifuDataGridView1.Columns[1].Width = 359;
+
+            }
+            else if(HomeView.sellerApi.response.Message.Contains("No application with specified seller key found"))
+            {
+                bunifuSnackbar1.Show(HomeView.MainForm, "Redirecting to App info.", BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                bunifuSnackbar1.Show(HomeView.MainForm, "Your seller key may have been changed please update it.", BunifuSnackbar.MessageTypes.Error, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                AppStatsView appStatsView = new AppStatsView();
+                SelectedAppView.AppViews.Controls.Add(appStatsView);
+                SelectedAppView.AppViews.Controls.Remove(this);
+
+            }
+            else
+                bunifuSnackbar1.Show(HomeView.MainForm, HomeView.sellerApi.response.Message, BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+
             AuthedYesNo.Checked = false;
             bunifuVScrollBar1.BindTo(bunifuDataGridView1, true);
         }
@@ -112,8 +126,7 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
                 SelectedAppView.AppViews.Controls.Add(new VariablesView());
                 
             }
-
-            if (!HomeView.sellerApi.response.Success)
+            else
                 bunifuSnackbar1.Show(new HomeView(), HomeView.sellerApi.response.Message, Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Error, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
 
         }

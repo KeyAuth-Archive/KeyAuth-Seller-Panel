@@ -1,4 +1,5 @@
-﻿using Bunifu.Utils;
+﻿using Bunifu.UI.WinForms;
+using Bunifu.Utils;
 using KeyAuth_Seller_Panel.SellerPanel.Views.PopUpViews;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,18 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
                 bunifuDataGridView1.Columns[2].Width = 75;
                 bunifuDataGridView1.Columns[3].Width = 75;
             }
+            else if (HomeView.sellerApi.response.Message.Contains("No application with specified seller key found"))
+            {
+                bunifuSnackbar1.Show(HomeView.MainForm, "Redirecting to App info.", BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                bunifuSnackbar1.Show(HomeView.MainForm, "Your seller key may have been changed please update it.", BunifuSnackbar.MessageTypes.Error, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                AppStatsView appStatsView = new AppStatsView();
+                SelectedAppView.AppViews.Controls.Add(appStatsView);
+                SelectedAppView.AppViews.Controls.Remove(this);
+
+            }
+            else
+                bunifuSnackbar1.Show(HomeView.MainForm, HomeView.sellerApi.response.Message, BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+
         }
         public static string UnixTimeToDateTime(long unixtime)
         {

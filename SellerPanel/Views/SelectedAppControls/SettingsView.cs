@@ -1,4 +1,6 @@
-﻿using KeyAuth_Seller_Panel.SellerPanel.Classes;
+﻿using Bunifu.UI.WinForms;
+using KeyAuth_Seller_Panel.SellerPanel.Classes;
+using KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -44,6 +46,18 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views
                 ResellerStoreTb.Text = HomeView.sellerApi.settings.Resellerstore;
                 UsernameInvalidMsgTb.Text = HomeView.sellerApi.settings.Userinvalidmsg;
             }
+            else if (HomeView.sellerApi.response.Message.Contains("No application with specified seller key found"))
+            {
+                bunifuSnackbar1.Show(HomeView.MainForm, "Redirecting to App info.", BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                bunifuSnackbar1.Show(HomeView.MainForm, "Your seller key may have been changed please update it.", BunifuSnackbar.MessageTypes.Error, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                AppStatsView appStatsView = new AppStatsView();
+                SelectedAppView.AppViews.Controls.Add(appStatsView);
+                SelectedAppView.AppViews.Controls.Remove(this);
+
+            }
+            else
+                bunifuSnackbar1.Show(HomeView.MainForm, HomeView.sellerApi.response.Message, BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+
             bunifuVScrollBar1.BindTo(flowLayoutPanel1);
 
 

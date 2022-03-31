@@ -1,4 +1,5 @@
-﻿using Bunifu.Utils;
+﻿using Bunifu.UI.WinForms;
+using Bunifu.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,21 +29,34 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
         public BlackListsView()
         {
             InitializeComponent();
+
+        }
+
+        private void BlackListsView_Load(object sender, EventArgs e)
+        {
             SetAscentColors(Properties.Settings.Default.AscentColor);
             ScrollbarBinder.BindDatagridView(bunifuDataGridView1, bunifuVScrollBar1);
             HomeView.sellerApi.BlackViewAll();
             if (HomeView.sellerApi.response.Success)
             {
-                foreach(var blacks in HomeView.sellerApi.blacks.All)
-                    Black.Add(new Blacks { Type = blacks.Type, Data = blacks.Ip+blacks.Hwid });
+                foreach (var blacks in HomeView.sellerApi.blacks.All)
+                    Black.Add(new Blacks { Type = blacks.Type, Data = blacks.Ip + blacks.Hwid });
                 bunifuDataGridView1.DataSource = Black;
                 bunifuDataGridView1.Columns[0].Width = 172;
                 bunifuDataGridView1.Columns[1].Width = 573;
             }
-        }
+            else if (HomeView.sellerApi.response.Message.Contains("No application with specified seller key found"))
+            {
+                bunifuSnackbar1.Show(HomeView.MainForm, "Redirecting to App info.", BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                bunifuSnackbar1.Show(HomeView.MainForm, "Your seller key may have been changed please update it.", BunifuSnackbar.MessageTypes.Error, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                AppStatsView appStatsView = new AppStatsView();
+                SelectedAppView.AppViews.Controls.Add(appStatsView);
+                SelectedAppView.AppViews.Controls.Remove(this);
 
-        private void BlackListsView_Load(object sender, EventArgs e)
-        {
+            }
+            else
+                bunifuSnackbar1.Show(HomeView.MainForm, HomeView.sellerApi.response.Message, BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+
             bunifuVScrollBar1.BindTo(bunifuDataGridView1, true);
         }
 

@@ -298,6 +298,7 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
 
         private void ChatsView_Load(object sender, EventArgs e)
         {
+
             SetAscentColors(Properties.Settings.Default.AscentColor);
         }
     }

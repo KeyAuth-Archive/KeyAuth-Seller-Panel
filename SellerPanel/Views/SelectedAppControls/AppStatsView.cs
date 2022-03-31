@@ -64,10 +64,6 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
                 MangersLb.Text = $"Total Mangers : {Stats.Managers}";
                 AccountsLb.Text = $"Total Accounts : {Stats.Totalaccs}";
             }
-            else
-            {
-                bunifuSnackbar1.Show(HomeView.MainForm, "Failed to load please update details", Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Error, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
-            }  
             
         }
 

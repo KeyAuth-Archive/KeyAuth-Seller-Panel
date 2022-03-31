@@ -1,4 +1,5 @@
-﻿using Bunifu.Utils;
+﻿using Bunifu.UI.WinForms;
+using Bunifu.Utils;
 using JNogueira.Discord.Webhook.Client;
 using KeyAuth_Seller_Panel.SellerPanel.Views.PopUpViews;
 using System;
@@ -10,31 +11,58 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
 {
     public partial class LicensesView : UserControl
     {
-        public string expirydaysleft(long time)
+        private static string TimeLicense(string str)
         {
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-            dtDateTime = dtDateTime.AddSeconds(time).ToUniversalTime();
-            TimeSpan difference = dtDateTime - DateTime.Today;
-            return Convert.ToString(difference.Days + " Days ");
-            //return Convert.ToString(difference.Days + " Days " + difference.Hours + " Hours Left");
+            string time = "0";
+            var s = (long)Double.Parse(str);
+            var t = TimeSpan.FromSeconds(s);
+
+            if(t.Minutes == 0 && t.Hours == 0 && t.Days == 0)
+                if(t.Seconds >= 2)
+                    time = Convert.ToString($"{t.Seconds} Seconds");
+                else
+                    time = Convert.ToString($"{t.Seconds} Second");
+            else if (t.Seconds == 0 && t.Hours == 0 && t.Days == 0)
+                if (t.Minutes >= 2)
+                    time = Convert.ToString($"{t.Minutes} Minutes");
+                else
+                    time = Convert.ToString($"{t.Minutes} Minute");
+
+            else if (t.Seconds == 0 && t.Minutes == 0 && t.Days == 0)
+                if (t.Hours >= 2)
+                    time = Convert.ToString($"{t.Hours} Hours");
+                else
+                    time = Convert.ToString($"{t.Hours} Hour");
+            else if (t.Seconds == 0 && t.Minutes == 0 && t.Hours == 0)
+                if (t.Days >= 2)
+                    time = Convert.ToString($"{t.Days} Days");
+                else
+                    time = Convert.ToString($"{t.Days} Day");
+            return time;
+
         }
         public LicensesView()
         {
-            string subName= string.Empty;
+
             InitializeComponent();
+        }
+
+        string key;
+        private void LicensesView_Load(object sender, EventArgs e)
+        {
+            string subName = string.Empty;
+            
             ScrollbarBinder.BindDatagridView(bunifuDataGridView1, bunifuVScrollBar1);
             bunifuVScrollBar1.BorderRadius = 10;
             HomeView.sellerApi.LicenseViewAll();
             if (HomeView.sellerApi.response.Success)
+            {
                 HomeView.sellerApi.SubViewAll();
                 foreach (var Keys in HomeView.sellerApi.license.Keys)
                 {
-                    foreach(var sub in HomeView.sellerApi.subs.All)
-                    {
-                    if(Keys.Level == sub.Level)
-                        subName = sub.Name;
-                    }
-
+                    foreach (var sub in HomeView.sellerApi.subs.All)
+                        if (Keys.Level == sub.Level)
+                            subName = sub.Name;
                     if (Keys.Banned == null)
                         Keys.Banned = "No";
                     else
@@ -45,22 +73,21 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
                         Keys.Usedon = "N/A";
                     else
                         Keys.Usedon = UsersView.UnixTimeToDateTime(long.Parse(Keys.Usedon));
-                    long Expires = long.Parse(Keys.Gendate) + long.Parse(Keys.Expires);
-                    bunifuDataGridView1.Rows.Insert(0, Keys.Status, Keys.Key,subName, Keys.Banned,Keys.Note, Keys.Genby, Keys.Usedby,Keys.Usedon, UsersView.UnixTimeToDateTime(long.Parse(Keys.Gendate)), expirydaysleft(Expires));
+                    bunifuDataGridView1.Rows.Insert(0, Keys.Status, Keys.Key, subName, Keys.Banned, Keys.Note, Keys.Genby, Keys.Usedby, Keys.Usedon, UsersView.UnixTimeToDateTime(long.Parse(Keys.Gendate)), TimeLicense(Keys.Expires));
                 }
-        }
-        public static string UnixTimeToDateTime(long unixtime)
-        {
-            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Local);
-            dtDateTime = dtDateTime.AddDays(unixtime).ToLocalTime();
-            var test = dtDateTime - DateTime.Today;
-            //string shorttime = test.ToShortDateString();
-            //return shorttime;
-            return null;
-        }
-        string key;
-        private void LicensesView_Load(object sender, EventArgs e)
-        {
+            }
+            else if (HomeView.sellerApi.response.Message.Contains("No application with specified seller key found"))
+            {
+                bunifuSnackbar1.Show(HomeView.MainForm, "Redirecting to App info.", BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                bunifuSnackbar1.Show(HomeView.MainForm, "Your seller key may have been changed please update it.", BunifuSnackbar.MessageTypes.Error, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+                AppStatsView appStatsView = new AppStatsView();
+                SelectedAppView.AppViews.Controls.Add(appStatsView);
+                SelectedAppView.AppViews.Controls.Remove(this);
+
+            }
+            else
+                bunifuSnackbar1.Show(HomeView.MainForm, HomeView.sellerApi.response.Message, BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
+
             bunifuVScrollBar1.BindTo(bunifuDataGridView1, true);
         }
 
@@ -430,6 +457,11 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
                 bunifuSnackbar1.Show(HomeView.MainForm, "Webhook Sent", Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Success, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
             else if (test == DialogResult.Abort)
                 bunifuSnackbar1.Show(HomeView.MainForm, "Webhook Failed", Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Error, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
+        }
+
+        private void bunifuPanel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
