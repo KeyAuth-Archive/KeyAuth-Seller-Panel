@@ -403,6 +403,11 @@
     <None Include="Resources\favicon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Blue.png" />
+    <None Include="Resources\Green.png" />
+    <None Include="Resources\Orange.png" />
+    <None Include="Resources\Red.png" />
+    <None Include="Resources\GreenSmall.png" />
     <Content Include="SellerPanel\favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

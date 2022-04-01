@@ -3,6 +3,8 @@ using Bunifu.Utils;
 using JNogueira.Discord.Webhook.Client;
 using KeyAuth_Seller_Panel.SellerPanel.Views.PopUpViews;
 using System;
+using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -10,6 +12,14 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
 {
     public partial class LicensesView : UserControl
     {
+        private static string DateLicense(string str)
+        {
+            //string time;
+            var s = (long)Double.Parse(str);
+            var t = DateTime.Now.AddSeconds(s);
+            var d = t.ToShortDateString();
+            return d;
+        }
         private static string TimeLicense(string str)
         {
             string time;
@@ -51,36 +61,30 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
         string key;
         private void LicensesView_Load(object sender, EventArgs e)
         {
-            string subName = string.Empty;
-            
+            bunifuDataGridView1.ColumnHeadersVisible = false;
             ScrollbarBinder.BindDatagridView(bunifuDataGridView1, bunifuVScrollBar1);
             bunifuVScrollBar1.BorderRadius = 10;
             HomeView.sellerApi.LicenseViewAll();
             if (HomeView.sellerApi.response.Success)
             {
+                
                 HomeView.sellerApi.SubViewAll();
                 foreach (var Keys in HomeView.sellerApi.license.Keys)
                 {
-                    foreach (var sub in HomeView.sellerApi.subs.All)
-                        if (Keys.Level == sub.Level)
-                            subName = sub.Name;
-                    if (Keys.Banned == null)
-                        Keys.Banned = "No";
+                    Image Status;
+                    if (Keys.Status == "Banned")
+                        Status = Properties.Resources.Red;
+                    else if (Keys.Status == "Used")
+                        Status = Properties.Resources.Blue;
+                    else if (Keys.Status == "Not Used")
+                        Status = Properties.Resources.Green;
                     else
-                        Keys.Banned = "Yes reason: " + Keys.Banned;
-                    if (Keys.Usedby == null)
-                        Keys.Usedby = "N/A";
-                    if (Keys.Usedon == null)
-                        Keys.Usedon = "N/A";
-                    else
-                        Keys.Usedon = UsersView.UnixTimeToDateTime(long.Parse(Keys.Usedon));
-                    bunifuDataGridView1.Rows.Insert(0, Keys.Status, Keys.Key, subName);
-                        ////, Keys.Banned, Keys.Note, Keys.Genby, Keys.Usedby, Keys.Usedon, UsersView.UnixTimeToDateTime(long.Parse(Keys.Gendate)), TimeLicense(Keys.Expires));
-
-
-
+                        Status = null;
+                    bunifuDataGridView1.Rows.Insert(0,Status, Keys.Key);
+                    
                 }
                 bunifuVScrollBar1.BindTo(bunifuDataGridView1, true);
+                LoadPanel.Visible = true;
             }
             else if (HomeView.sellerApi.response.Message.Contains("No application with specified seller key found"))
             {
@@ -91,14 +95,10 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
                 SelectedAppView.AppViews.Controls.Remove(this);
             }
             else
+            {
+                LoadPanel.Visible = false;
                 bunifuSnackbar1.Show(HomeView.MainForm, HomeView.sellerApi.response.Message, BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
-
-
-        }
-        
-        private void bunifuDataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-
+            }
         }
 
         private void generateLicensesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -437,6 +437,73 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             
+        }
+
+        private void bunifuLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void LoadInfo()
+        {
+            string subName = string.Empty;
+            BanPanel.Visible = false;
+            ReasonTb.Text = "";
+            foreach (var keys in HomeView.sellerApi.license.Keys)
+                if (key == keys.Key)
+                {
+                    Image Status;
+                    KeyLb.Text = keys.Key;
+                    StatusLb.Text = keys.Status;
+                    foreach (var sub in HomeView.sellerApi.subs.All)
+                        if (keys.Level == sub.Level)
+                            subName = sub.Name;
+                    SubNameLb.Text = subName;
+                    SubLvlLb.Text = keys.Level;
+                    if (keys.Status == "Banned")
+                    {
+                        Status = Properties.Resources.Red;
+                        BanPanel.Visible = true;
+                        ReasonTb.Text = keys.Banned.ToString();
+                    }
+                    else if (keys.Status == "Used")
+                        Status = Properties.Resources.Blue;
+                    else if (keys.Status == "Not Used")
+                        Status = Properties.Resources.Green;
+                    else
+                        Status = null;
+                    StatusPic.Image = Status;
+
+                    if (keys.Note == null)
+                        keys.Note = "N/A";
+                    NoteLb.Text = keys.Note.ToString();
+
+                    if (keys.Usedby == null)
+                        keys.Usedby = "N/A";
+                    UsedByTb.Text = keys.Usedby.ToString();
+                    if (keys.Usedon == null)
+                        UsedOnLb.Text = "N/A";
+                    else
+                    {
+                        UsedOnLb.Text = UsersView.UnixTimeToDateTime(long.Parse(keys.Usedon));
+                    }
+                    GenBy.Text = keys.Genby.ToString();
+                    CreationDateLb.Text = UsersView.UnixTimeToDateTime(long.Parse(keys.Gendate));
+                    DurationTimeLb.Text = TimeLicense(keys.Expires);
+                    DurationDateLb.Text = DateLicense(keys.Expires);
+                }
+        }
+        private void bunifuDataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (bunifuDataGridView1.SelectedCells.Count >= 1)
+            {
+                key = bunifuDataGridView1.SelectedCells[1].Value.ToString();
+                LoadInfo();
+            }
+        }
+
+        private void StatusLb_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
