@@ -3,7 +3,6 @@ using Bunifu.Utils;
 using JNogueira.Discord.Webhook.Client;
 using KeyAuth_Seller_Panel.SellerPanel.Views.PopUpViews;
 using System;
-using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 
@@ -13,7 +12,7 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
     {
         private static string TimeLicense(string str)
         {
-            string time = "0";
+            string time;
             var s = (long)Double.Parse(str);
             var t = TimeSpan.FromSeconds(s);
 
@@ -38,6 +37,8 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
                     time = Convert.ToString($"{t.Days} Days");
                 else
                     time = Convert.ToString($"{t.Days} Day");
+            else
+                time = Convert.ToString($"{t.Days} Days");
             return time;
 
         }
@@ -73,8 +74,13 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
                         Keys.Usedon = "N/A";
                     else
                         Keys.Usedon = UsersView.UnixTimeToDateTime(long.Parse(Keys.Usedon));
-                    bunifuDataGridView1.Rows.Insert(0, Keys.Status, Keys.Key, subName, Keys.Banned, Keys.Note, Keys.Genby, Keys.Usedby, Keys.Usedon, UsersView.UnixTimeToDateTime(long.Parse(Keys.Gendate)), TimeLicense(Keys.Expires));
+                    bunifuDataGridView1.Rows.Insert(0, Keys.Status, Keys.Key, subName);
+                        ////, Keys.Banned, Keys.Note, Keys.Genby, Keys.Usedby, Keys.Usedon, UsersView.UnixTimeToDateTime(long.Parse(Keys.Gendate)), TimeLicense(Keys.Expires));
+
+
+
                 }
+                bunifuVScrollBar1.BindTo(bunifuDataGridView1, true);
             }
             else if (HomeView.sellerApi.response.Message.Contains("No application with specified seller key found"))
             {
@@ -83,18 +89,16 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
                 AppStatsView appStatsView = new AppStatsView();
                 SelectedAppView.AppViews.Controls.Add(appStatsView);
                 SelectedAppView.AppViews.Controls.Remove(this);
-
             }
             else
                 bunifuSnackbar1.Show(HomeView.MainForm, HomeView.sellerApi.response.Message, BunifuSnackbar.MessageTypes.Information, 10000, "", BunifuSnackbar.Positions.MiddleCenter);
 
-            bunifuVScrollBar1.BindTo(bunifuDataGridView1, true);
-        }
 
+        }
+        
         private void bunifuDataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (bunifuDataGridView1.Rows.Count > 0)
-                this.key = bunifuDataGridView1.SelectedCells[1].Value.ToString();
+
         }
 
         private void generateLicensesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -396,44 +400,10 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
             Clipboard.SetDataObject(key);
             IDataObject iData = Clipboard.GetDataObject();
             if (iData.GetDataPresent(DataFormats.Text))
-                bunifuSnackbar1.Show(HomeView.MainForm, "Key successfuly copied to clipboard.", Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Success, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
+                bunifuSnackbar1.Show(HomeView.MainForm, "Key successfuly copied to clipboard.", BunifuSnackbar.MessageTypes.Success, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
             else
-                bunifuSnackbar1.Show(HomeView.MainForm, "Error", Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Error, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
+                bunifuSnackbar1.Show(HomeView.MainForm, "Error", BunifuSnackbar.MessageTypes.Error, 5000, "", Bunifu.UI.WinForms.BunifuSnackbar.Positions.MiddleCenter);
         }
-
-        private async void webhookToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var client = new DiscordWebhookClient("https://discord.com/api/webhooks/949092101105258556/iztPLZq4a-aprB6tHWosPGswrblYtrwfbGRB7mq_4fkQJo4T8XXZOVVZhr5JX2q0yMTp");
-            // Create your DiscordMessage with all parameters of your message.
-            var message = new DiscordMessage(
-                "Discord Webhook Client sent this message! " + DiscordEmoji.Grinning,
-                username: "Username",
-                avatarUrl: "https://avatars3.githubusercontent.com/u/24236993?s=460&v=4",
-                embeds: new[]
-                {
-        new DiscordMessageEmbed(
-            "Embed title " + DiscordEmoji.Thumbsup,
-            color: 0,
-            author: new DiscordMessageEmbedAuthor("Embed 1 author name"),
-            url: "https://github.com/jlnpinheiro/discord-webhook-client/",
-            description: "This is a embed description.",
-            fields: new[]
-            {
-                new DiscordMessageEmbedField("Field 1 name", "Field 1 value"),
-                new DiscordMessageEmbedField("Field 2 name", "Field 2 value")
-            },
-            thumbnail: new DiscordMessageEmbedThumbnail("https://avatars3.githubusercontent.com/u/24236993?s=460&v=4"),
-            image: new DiscordMessageEmbedImage("https://avatars3.githubusercontent.com/u/24236993?s=460&v=4"),
-            footer: new DiscordMessageEmbedFooter("This is a embed footer text", "https://avatars3.githubusercontent.com/u/24236993?s=460&v=4")
-        )
-                }
-            );
-
-            // Send the message!
-            await client.SendToDiscord(message);
-        }
-
-
         private void createUserWithLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateNewUserLicenseView createNewUserLicenseView = new CreateNewUserLicenseView(key);
@@ -462,6 +432,11 @@ namespace KeyAuth_Seller_Panel.SellerPanel.Views.SelectedAppControls
         private void bunifuPanel1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            
         }
     }
 }
