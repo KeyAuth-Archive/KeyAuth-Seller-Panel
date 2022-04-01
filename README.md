@@ -10,5 +10,6 @@ The file hash for the exe can also be found there.
 
 Update history : (major updates only)
 
-Major bug fixes to license view (crashing issue resolved).
+Fixed major bug to license view (crashing issue resolved).
 Redesign of license page.
+Fixed Exe not starting issue
